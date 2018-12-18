@@ -10,24 +10,20 @@ namespace DependencyInjectionContainer.Model
     public class DependencyProvider
     {
         private readonly DependenciesConfiguration configuration;
-        private readonly ConcurrentDictionary<int, Stack<Type>> recursionTypesExcluder;
+        private readonly ConcurrentDictionary<int, Stack<Type>> recursionTypes;
 
         public IEnumerable<TDependency> Resolve<TDependency>() 
             where TDependency : class
         {
             Type dependencyType = typeof(TDependency);
 
-            if (dependencyType.IsGenericTypeDefinition)
-            {
-                throw new ArgumentException("Generic type definition resolving is not supproted");
-            }
-            if (recursionTypesExcluder.TryGetValue(Thread.CurrentThread.ManagedThreadId, out Stack<Type> types))
+            if (recursionTypes.TryGetValue(Thread.CurrentThread.ManagedThreadId, out Stack<Type> types))
             {
                 types.Clear();
             }
             else
             {
-                recursionTypesExcluder[Thread.CurrentThread.ManagedThreadId] = new Stack<Type>();
+                recursionTypes[Thread.CurrentThread.ManagedThreadId] = new Stack<Type>();
             }
 
             return Resolve(dependencyType).OfType<TDependency>();
@@ -47,7 +43,7 @@ namespace DependencyInjectionContainer.Model
             List<object> result = new List<object>();
             IEnumerable<ImplementationContainer> implementationContainers 
                 = configuration.GetImplementations(dependency)
-                .Where(impl => !recursionTypesExcluder[Thread.CurrentThread.ManagedThreadId].Contains(impl.ImplementationType));
+                .Where(impl => !recursionTypes[Thread.CurrentThread.ManagedThreadId].Contains(impl.ImplementationType));
 
             object instance;
             foreach (ImplementationContainer implementationContainer in implementationContainers)
@@ -66,17 +62,10 @@ namespace DependencyInjectionContainer.Model
 
         private IEnumerable<object> ResolveNonGeneric(Type dependency)
         {
-            if (dependency.IsValueType)
-            {
-                return new List<object>
-                {
-                    Activator.CreateInstance(dependency)
-                };
-            }
-
+            
             IEnumerable<ImplementationContainer> implementationContainers = 
                 configuration.GetImplementations(dependency)
-                .Where(impl => !recursionTypesExcluder[Thread.CurrentThread.ManagedThreadId].Contains(impl.ImplementationType));
+                .Where(impl => !recursionTypes[Thread.CurrentThread.ManagedThreadId].Contains(impl.ImplementationType));
             
             List<object> result = new List<object>();
             object dependencyInstance;
@@ -115,13 +104,13 @@ namespace DependencyInjectionContainer.Model
             ConstructorInfo[] constructors = type.GetConstructors()
                 .OrderBy(constructor => constructor.GetParameters().Length).ToArray();
             object instance = null;
-            List<object> parameters = new List<object>();
-            recursionTypesExcluder[Thread.CurrentThread.ManagedThreadId].Push(type);
+            recursionTypes[Thread.CurrentThread.ManagedThreadId].Push(type);
 
             for (int constructor = 0; constructor < constructors.Length && instance == null; ++constructor)
             {
                 try
                 {
+                    List<object> parameters = new List<object>();
                     foreach (ParameterInfo constructorParameter in constructors[constructor].GetParameters())
                     {
                         parameters.Add(Resolve(constructorParameter.ParameterType));
@@ -129,19 +118,19 @@ namespace DependencyInjectionContainer.Model
                     instance = constructors[constructor].Invoke(parameters.ToArray());
                 }
                 catch
-                {
-                    parameters.Clear();
-                }
+                {}
             }
 
-            recursionTypesExcluder[Thread.CurrentThread.ManagedThreadId].Pop();
+            recursionTypes[Thread.CurrentThread.ManagedThreadId].Pop();
             return instance;
         }
 
         public DependencyProvider(DependenciesConfiguration configuration)
         {
             this.configuration = configuration;
-            recursionTypesExcluder = new ConcurrentDictionary<int, Stack<Type>>();
+            recursionTypes = new ConcurrentDictionary<int, Stack<Type>>();
         }
+        
+        
     }
 }

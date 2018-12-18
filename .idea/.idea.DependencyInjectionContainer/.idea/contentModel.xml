@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Gurinov\.Rider2018.2\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Gurinov\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Gurinov\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_DependencyInjectionContainer.1429601041.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Gurinov\Desktop\DependencyInjectionContainer" t="IncludeFlat">
+    <e p="C:\Users\gurin\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\gurin\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_DependencyInjectionContainer.965714485.00" t="ExcludeRecursive" />
+    <e p="C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer" t="IncludeFlat">
       <e p="DependencyInjectionContainer" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="DependenciesConfiguration.cs" t="Include" />
@@ -32,6 +31,10 @@
           <e p="IGenericInterface.cs" t="Include" />
           <e p="Interface1.cs" t="Include" />
           <e p="Interface2.cs" t="Include" />
+          <e p="IRecursion1.cs" t="Include" />
+          <e p="IRecursion2.cs" t="Include" />
+          <e p="RecursionClass.cs" t="Include" />
+          <e p="RecursionClass2.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />

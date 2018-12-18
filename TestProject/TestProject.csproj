@@ -45,12 +45,16 @@
     <Compile Include="additionallyFiles\Class1.cs" />
     <Compile Include="additionallyFiles\Class2.cs" />
     <Compile Include="additionallyFiles\Class3.cs" />
+    <Compile Include="additionallyFiles\IRecursion1.cs" />
+    <Compile Include="additionallyFiles\IRecursion2.cs" />
+    <Compile Include="additionallyFiles\RecursionClass.cs" />
     <Compile Include="additionallyFiles\GenericImplementation1.cs" />
     <Compile Include="additionallyFiles\GenericImplementation2.cs" />
     <Compile Include="additionallyFiles\GenericImplementation3.cs" />
     <Compile Include="additionallyFiles\IGenericInterface.cs" />
     <Compile Include="additionallyFiles\Interface1.cs" />
     <Compile Include="additionallyFiles\Interface2.cs" />
+    <Compile Include="additionallyFiles\RecursionClass2.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

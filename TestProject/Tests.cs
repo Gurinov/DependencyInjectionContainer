@@ -57,6 +57,7 @@ namespace TestProject
             Assert.AreEqual(2, registeredImplementations.Count);
             Assert.AreEqual(registeredImplementations[0].ImplementationType, typeof(GenericImplementation1<>));
             Assert.AreEqual(registeredImplementations[1].ImplementationType, typeof(GenericImplementation2<>));
+            
         }
         
         [Test]
@@ -78,8 +79,6 @@ namespace TestProject
                 interface1.Select(instance => instance.GetType()).ToList());
         }
         
-        
-        
         [Test]
         public void SingletonResolveTest()
         {
@@ -88,7 +87,16 @@ namespace TestProject
 
             Assert.AreEqual(provider.Resolve<Interface1>().First(), provider.Resolve<Interface1>().First());
         }
-   
+        
+        [Test]
+        public void RecursionTest()
+        {
+            config.Register<IRecursion1, RecursionClass>();
+            config.Register<IRecursion2, RecursionClass2>();
+            provider = new DependencyProvider(config);
+
+            Assert.AreEqual(provider.Resolve<IRecursion2>().Count(), 1);
+        }
         
     }
 }

@@ -9,3 +9,14 @@ C:\Users\Gurinov\Desktop\DependencyInjectionContainer\TestProject\obj\Debug\Test
 C:\Users\Gurinov\Desktop\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.csproj.CopyComplete
 C:\Users\Gurinov\Desktop\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.dll
 C:\Users\Gurinov\Desktop\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.pdb
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\bin\Debug\TestProject.dll
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\bin\Debug\TestProject.pdb
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\bin\Debug\DependencyInjectionContainer.dll
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\bin\Debug\nunit.framework.dll
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\bin\Debug\DependencyInjectionContainer.pdb
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\bin\Debug\nunit.framework.xml
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.csprojAssemblyReference.cache
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.csproj.CoreCompileInputs.cache
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.csproj.CopyComplete
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.dll
+C:\Users\gurin\Desktop\DependencyInjectionContainer\DependencyInjectionContainer\TestProject\obj\Debug\TestProject.pdb
