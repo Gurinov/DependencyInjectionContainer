@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using DependencyInjectionContainer.Model;
 using NUnit.Framework;
 using TestProject.additionallyFiles;
@@ -55,6 +57,36 @@ namespace TestProject
             Assert.AreEqual(2, registeredImplementations.Count);
             Assert.AreEqual(registeredImplementations[0].ImplementationType, typeof(GenericImplementation1<>));
             Assert.AreEqual(registeredImplementations[1].ImplementationType, typeof(GenericImplementation2<>));
+        }
+        
+        [Test]
+        public void ResolveTest()
+        {
+            config.Register<Interface1, Class1>();
+            config.Register<Interface1, Class2>();
+            
+            provider = new DependencyProvider(config);
+
+            var interface1 = provider.Resolve<Interface1>();
+            
+            List<Type> expectedInstancesTypes = new List<Type>
+            {
+                typeof(Class1),
+                typeof(Class2)
+            };
+            CollectionAssert.AreEquivalent(expectedInstancesTypes,
+                interface1.Select(instance => instance.GetType()).ToList());
+        }
+        
+        
+        
+        [Test]
+        public void SingletonResolveTest()
+        {
+            config.Register<Interface1, Class1>(Lifetime.Singleton);
+            provider = new DependencyProvider(config);
+
+            Assert.AreEqual(provider.Resolve<Interface1>().First(), provider.Resolve<Interface1>().First());
         }
    
         

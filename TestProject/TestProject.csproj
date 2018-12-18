@@ -47,6 +47,7 @@
     <Compile Include="additionallyFiles\Class3.cs" />
     <Compile Include="additionallyFiles\GenericImplementation1.cs" />
     <Compile Include="additionallyFiles\GenericImplementation2.cs" />
+    <Compile Include="additionallyFiles\GenericImplementation3.cs" />
     <Compile Include="additionallyFiles\IGenericInterface.cs" />
     <Compile Include="additionallyFiles\Interface1.cs" />
     <Compile Include="additionallyFiles\Interface2.cs" />

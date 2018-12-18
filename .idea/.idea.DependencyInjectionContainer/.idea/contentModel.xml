@@ -28,6 +28,7 @@
           <e p="Class3.cs" t="Include" />
           <e p="GenericImplementation1.cs" t="Include" />
           <e p="GenericImplementation2.cs" t="Include" />
+          <e p="GenericImplementation3.cs" t="Include" />
           <e p="IGenericInterface.cs" t="Include" />
           <e p="Interface1.cs" t="Include" />
           <e p="Interface2.cs" t="Include" />
