@@ -61,6 +61,19 @@ namespace TestProject
         }
         
         [Test]
+        public void OpenGenericTypeProviderTest()
+        {
+            config.Register(typeof(IGenericInterface<>), typeof(GenericImplementation4<>));
+            config.Register<Interface1, Class1>();
+            
+            provider = new DependencyProvider(config);
+
+            Assert.AreEqual(provider.Resolve<IGenericInterface<Interface1>>().Count(), 1);
+            Assert.AreEqual(provider.Resolve<IGenericInterface<Interface1>>().First().GetType(), typeof(GenericImplementation4<Interface1>));
+            
+        }
+        
+        [Test]
         public void ResolveTest()
         {
             config.Register<Interface1, Class1>();
